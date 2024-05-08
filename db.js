@@ -7,18 +7,16 @@ const client = new MongoClient(process.env.DB_URI);
 
 async function connectToMongoDb() {
   try {
-    const database = client.db('sample_mflix');
-    const movies = database.collection('movies');
+    const database = client.db('futureblink');
+    const users = database.collection('users');
 
-    // Query for a movie that has the title 'Back to the Future'
     const query = { title: 'Back to the Future' };
-    const movie = await movies.findOne(query);
+    const movie = await users.findOne(query);
 
     console.log('Connected to MongoDb');
   } finally {
-    // Ensures that the client will close when you finish/error
     await client.close();
   }
 }
 
-module.exports = { connectToMongoDb };
+connectToMongoDb().catch(console.dir);

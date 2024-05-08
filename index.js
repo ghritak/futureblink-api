@@ -1,13 +1,12 @@
 const express = require('express');
-const { connectToMongoDb } = require('./db');
+const { router } = require('./routes/router');
+require('./db');
 
 const app = express();
 
-connectToMongoDb();
+app.use(express.json());
 
-app.use('/', (req, res) => {
-  res.send('Hello world');
-});
+app.use('/', router);
 
 app.listen(4000, () => {
   console.log('Listening on port 4000');
