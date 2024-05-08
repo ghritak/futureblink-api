@@ -20,11 +20,18 @@ A basic Node.js Express application.
 
 ## Connect to MongoDb Database
 
-1. Go to [MongoDb website](https://www.mongodb.com/URL), Sign in to MongoDb Atlas or create account
+1. Go to [MongoDb website](https://www.mongodb.com), Sign in to MongoDb Atlas or create account
 2. Create a New Project at the top left corner by name future Blink
-3. Create a deployment and choose M0 Free configuration, Create the cluster with name futureblink.
-4. Add your local machine IP Address by clicking the Add current IP Address Button
-5. Terminate the server by Ctrl + C, then Restart the server after connecting to database
+3. Create a deployment and choose M0 Free configuration, Create the cluster with name futureblink and then give a password and Create database user.
+4. Choose a connection method > Driver > Node.js 5.5 or later > Copy the mongodb url string and place the username and password
+5. Create a .env file and then paste the mongodb url string in .env as
+
+   ```bash
+   DB_URI='mongodb+srv://<username>:<password>@futureblink.wwdo06g.mongodb.net/?retryWrites=true&w=majority&appName=futureblink'
+   ```
+
+6. Add your local machine IP Address by clicking the Add current IP Address Button
+7. Terminate the server by Ctrl + C, then Restart the server after connecting to database
 
    ```bash
    yarn start
