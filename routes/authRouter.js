@@ -8,7 +8,7 @@ const {
 
 const authRouter = express.Router();
 
-authRouter.use('/login', validateLogin, login);
+authRouter.post('/login', validateLogin, login);
 
 authRouter.post('/signup', validateSignup, signup);
 

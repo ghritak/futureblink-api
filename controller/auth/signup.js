@@ -1,3 +1,5 @@
+const { initialNodes, initialEdges } = require('../../constants');
+const flow = require('../../model/flow');
 const User = require('../../model/users');
 const bcrypt = require('bcrypt');
 
@@ -14,10 +16,16 @@ const signup = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     let hashedPaaword = await bcrypt.hash(password, salt);
 
-    await User.create({
+    const newUser = await User.create({
       name: name,
       email: email,
       password: hashedPaaword,
+    });
+
+    await flow.create({
+      user_id: newUser._id,
+      nodes: initialNodes,
+      edges: initialEdges,
     });
 
     return res.status(201).json({ message: 'Succesfully signed up.' });
