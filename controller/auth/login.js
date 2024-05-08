@@ -1,11 +1,11 @@
-const users = require('../../model/users');
+const User = require('../../model/users');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await users.findOne({ email: email });
+    const user = await User.findOne({ email: email });
     if (!user)
       return res
         .status(404)
@@ -27,11 +27,15 @@ const login = async (req, res) => {
       token: authToken,
       data: userData,
     });
-  } catch {
-    (err) => {
+  } catch (err) {
+    console.log(err);
+    if (err.name === 'ValidationError') {
+      const errorMessage = err.message.split(':').pop().trim();
+      return res.status(400).json({ error: errorMessage });
+    } else {
       console.log(err);
-      return res.status(500).json({ error: 'Internal server error' });
-    };
+      return res.status(500).json({ error: 'Internal server error.' });
+    }
   }
 };
 
