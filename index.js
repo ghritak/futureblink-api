@@ -1,8 +1,12 @@
+require('dotenv').config();
+require('./db');
 const express = require('express');
 const { router } = require('./routes/router');
-require('./db');
+const connectToMongoDb = require('./db');
 
 const app = express();
+
+connectToMongoDb();
 
 app.use(express.json());
 

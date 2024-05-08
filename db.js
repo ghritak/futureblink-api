@@ -1,22 +1,14 @@
-const { MongoClient } = require('mongodb');
-const dotenv = require('dotenv');
-
-dotenv.config();
-
-const client = new MongoClient(process.env.DB_URI);
+const mongoose = require('mongoose');
 
 async function connectToMongoDb() {
   try {
-    const database = client.db('futureblink');
-    const users = database.collection('users');
-
-    const query = { title: 'Back to the Future' };
-    const movie = await users.findOne(query);
-
-    console.log('Connected to MongoDb');
-  } finally {
-    await client.close();
+    await mongoose.connect(process.env.DB_URI, {
+      dbName: 'futureblink',
+    });
+    console.log('Connected to MongoDB');
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
   }
 }
 
-connectToMongoDb().catch(console.dir);
+module.exports = connectToMongoDb;
