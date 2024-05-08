@@ -24,7 +24,7 @@ A basic Node.js Express application.
 2. Create a New Project at the top left corner by name future Blink
 3. Create a deployment and choose M0 Free configuration, Create the cluster with name futureblink and then give a password and Create database user.
 4. Choose a connection method > Driver > Node.js 5.5 or later > Copy the mongodb url string and place the username and password
-5. Create a .env file and then paste the mongodb url string in .env as
+5. Create a .env file and then paste the mongodb url string in .env like below
 
    ```bash
    DB_URI='mongodb+srv://<username>:<password>@futureblink.wwdo06g.mongodb.net/?retryWrites=true&w=majority&appName=futureblink'

@@ -1,6 +1,9 @@
 const express = require('express');
+const { connectToMongoDb } = require('./db');
 
 const app = express();
+
+connectToMongoDb();
 
 app.use('/', (req, res) => {
   res.send('Hello world');
