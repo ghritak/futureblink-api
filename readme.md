@@ -24,14 +24,16 @@ A basic Node.js Express application.
 2. Create a New Project at the top left corner by name future Blink
 3. Create a deployment and choose M0 Free configuration, Create the cluster with name futureblink and then give a password and Create database user.
 4. Choose a connection method > Driver > Node.js 5.5 or later > Copy the mongodb url string and place the username and password
-5. Create a .env file and then paste the mongodb url string in .env like below
+5. Create a .env file and then paste the mongodb url string along with other environment variables like below
 
    ```bash
    DB_URI='mongodb+srv://<username>:<password>@futureblink.wwdo06g.mongodb.net/?retryWrites=true&w=majority&appName=futureblink'
+   JWT_SECRET_KEY='<some_security_key>'
+   ORIGINS=http://localhost:3000
    ```
 
-6. Add your local machine IP Address by clicking the Add current IP Address Button
-7. Terminate the server by Ctrl + C, then Restart the server after connecting to database
+6. Add your local machine IP Address by clicking the Add current IP Address Button or you can add 0.0.0.0/0 under Security > Network Access > IP Access List. This will allow MongoDb to accept request from all IP Address.
+7. Terminate the server by Ctrl + C and then Restart the server after connecting to database.
 
    ```bash
    yarn start
