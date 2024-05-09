@@ -29,7 +29,7 @@ A basic Node.js Express application.
    ```bash
    DB_URI='mongodb+srv://<username>:<password>@futureblink.wwdo06g.mongodb.net/?retryWrites=true&w=majority&appName=futureblink'
    JWT_SECRET_KEY='<some_security_key>'
-   ORIGINS=http://localhost:3000,http://localhost:3001
+   ORIGINS='http://localhost:3000,http://localhost:3001'
    ```
 
 6. Add your local machine IP Address by clicking the Add current IP Address Button or you can add 0.0.0.0/0 under Security > Network Access > IP Access List. This will allow MongoDb to accept request from all IP Address.
